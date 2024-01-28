@@ -7,18 +7,21 @@ avatar = AvatarNames()
 biblical_names = biblical.bible_lists()
 avatar_names = avatar.avatar_lists()
 
-# Group biblical names into sets of three
-biblical_sets = [biblical_names[i:i+3] for i in range(0, len(biblical_names), 3)]
+# Calculate the maximum number of complete sets
+max_sets = min(len(biblical_names) // 3, len(avatar_names))
 
 # Pair up each set of three biblical names with one avatar name
 paired_names = []
-for biblical_set in biblical_sets:
-    if avatar_names:
-        avatar_name = avatar_names.pop(0)
-        paired_names.append(biblical_set + [avatar_name])
+for _ in range(max_sets):
+    biblical_set = biblical_names[:3]
+    avatar_name = avatar_names.pop(0)
+    paired_names.append(biblical_set + [avatar_name])
+    # Remove the processed biblical names
+    biblical_names = biblical_names[3:]
 
 # Display the result
 count = 1
 for paired in paired_names:
-    print(paired, count)
+    print(paired)
+    print(count)
     count += 1
