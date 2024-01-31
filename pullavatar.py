@@ -1,7 +1,7 @@
 import random
 
 with open('avatar-names.txt', 'r') as file:
-    names_list = file.read().splitlines()
+    names_list = [name.strip().upper() for name in file.read().splitlines()]
 
 def select_avatar_names(names):
     return random.sample(names, 1)

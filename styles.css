@@ -1,0 +1,30 @@
+/* styles.css */
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+#title-screen,
+#game-screen,
+#end-screen {
+  text-align: center;
+  margin-top: 50px;
+}
+
+button {
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
+}
+
+#options button {
+  margin: 5px;
+}
+
+#options button.correct {
+  background-color: green;
+}
+
+#options button.incorrect {
+  background-color: red;
+}

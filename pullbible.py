@@ -21,6 +21,5 @@ def retrieve_bibs():
     selected_lists = bible_lists()
     return selected_lists
 
-# Example usage
-for triplet in retrieve_bibs():
-    print(triplet)
+# for triplet in retrieve_bibs():
+#     print(triplet)
