@@ -1,29 +1,26 @@
 import random
 
-class BibleNames:
-    with open('bible-names.txt', 'r') as file:
-        names_list = file.read().splitlines()
+with open('bible-names.txt', 'r') as file:
+    names_list = file.read().splitlines()
 
-    @classmethod
-    def select_bible_names(cls, names):
-        if len(names) >= 3:
-            selected_names = random.sample(names, 3)
-            for name in selected_names:
-                names.remove(name)
-            return selected_names
-        else:
-            return names
+def select_bible_names(names):
+    return random.sample(names, min(3, len(names)))
 
-    @classmethod
-    def bible_lists(cls):
-        remaining_names = cls.names_list.copy()
-        result = []
+def bible_lists():
+    remaining_names = names_list.copy()
+    result = []
 
-        while remaining_names:
-            selected_names = cls.select_bible_names(remaining_names)
-            result.extend(selected_names)
+    while remaining_names:
+        bible_triplet = select_bible_names(remaining_names)
+        result.append(bible_triplet)
+        remaining_names = [name for name in remaining_names if name not in bible_triplet]
 
-        return result
+    return result
 
-biblical = BibleNames
-print(biblical.bible_lists())
+def retrieve_bibs():
+    selected_lists = bible_lists()
+    return selected_lists
+
+# Example usage
+for triplet in retrieve_bibs():
+    print(triplet)

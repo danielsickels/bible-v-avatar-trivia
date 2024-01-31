@@ -1,29 +1,25 @@
 import random
 
-class AvatarNames:
-    with open('avatar-names.txt', 'r') as file:
-        names_list = file.read().splitlines()
+with open('avatar-names.txt', 'r') as file:
+    names_list = file.read().splitlines()
 
-    @classmethod
-    def select_avatar_names(cls, names):
-        if len(names) >= 1:
-            selected_names = random.sample(names, 1)
-            for name in selected_names:
-                names.remove(name)
-            return selected_names
-        else:
-            return names
+def select_avatar_names(names):
+    return random.sample(names, 1)
 
-    @classmethod
-    def avatar_lists(cls):
-        remaining_names = cls.names_list.copy()
-        result = []
+def avatar_lists():
+    remaining_names = names_list.copy()
+    result = []
 
-        while remaining_names:
-            selected_names = cls.select_avatar_names(remaining_names)
-            result.extend(selected_names)
+    while remaining_names:
+        avatar_name = select_avatar_names(remaining_names)
+        result.append(avatar_name)
+        remaining_names = [name for name in remaining_names if name not in avatar_name[0]]
 
-        return result
+    return result
 
-avatars = AvatarNames
-print(avatars.avatar_lists())
+def retrieve_avatar():
+    selected_lists = avatar_lists()
+    return selected_lists
+
+# for avatar in avatar_lists():
+#     print(avatar[0])
