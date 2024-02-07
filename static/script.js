@@ -10,7 +10,13 @@ function startGame() {
 }
 
 function showHighScore() {
-  // Implement high score logic if needed
+  fetch("/get_high_scores")
+    .then((response) => response.json())
+    .then((highScores) => {
+      // Implement logic to display high scores
+      console.log(highScores);
+    })
+    .catch((error) => console.error("Error fetching high scores:", error));
 }
 
 function loadQuestion() {
@@ -18,7 +24,7 @@ function loadQuestion() {
     .then((response) => response.json())
     .then((quizSets) => {
       const quizQuestion = quizSets[currentQuestionIndex];
-      console.log("Correc Answer:", quizQuestion.answer);
+      console.log("Correct Answer:", quizQuestion.answer);
       const questionElement = document.getElementById("question");
       const optionsElement = document.getElementById("options");
 
@@ -59,7 +65,7 @@ function disableOptions() {
 function nextQuestion() {
   currentQuestionIndex++;
 
-  if (currentQuestionIndex < 74) {
+  if (currentQuestionIndex < 30) {
     loadQuestion();
   } else {
     endGame();
@@ -80,4 +86,21 @@ function endGame() {
   document.getElementById(
     "final-score"
   ).textContent = `Your Final Score: ${score}`;
+
+  fetch("/update_high_scores", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ player_score: score }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        console.log("High score updated successfully!");
+      } else {
+        console.error("Failed to update high score.");
+      }
+    })
+    .catch((error) => console.error("Error updating high score:", error));
 }

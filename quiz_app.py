@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 bib_triplet = retrieve_bibs()
 avatars = retrieve_avatar()
+high_scores = []
 
 static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
 app.static_folder = static_dir
@@ -49,6 +50,31 @@ def check_answer():
     score = 10 if is_correct else 0
 
     return jsonify({'is_correct': is_correct, 'score': score})
+
+@app.route('/get_high_scores', methods=['GET'])
+def get_high_scores():
+    return jsonify(high_scores)
+
+@app.route('/update_high_scores', methods=['POST'])
+def update_high_scores():
+    global high_scores
+
+    try:
+        data = request.json
+        score = data.get('player_score')
+
+        # Store the high score
+        high_scores.append(score)
+        high_scores.sort(reverse=True)  # Sort in descending order
+
+        # Keep only the top N high scores (adjust N as needed)
+        N = 10
+        high_scores = high_scores[:N]
+
+        return jsonify({'success': True})
+    except Exception as e:
+        print(f"Error updating high score: {str(e)}")
+        return jsonify({'success': False})
 
 if __name__ == '__main__':
     app.run(debug=True)

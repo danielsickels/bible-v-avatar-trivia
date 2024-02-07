@@ -1,3 +1,5 @@
+# pullavatar.py
+
 import random
 
 with open('avatar-names.txt', 'r') as file:
