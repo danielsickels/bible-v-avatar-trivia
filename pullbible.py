@@ -20,6 +20,3 @@ def bible_lists():
 def retrieve_bibs():
     selected_lists = bible_lists()
     return selected_lists
-
-# for triplet in retrieve_bibs():
-#     print(triplet)
