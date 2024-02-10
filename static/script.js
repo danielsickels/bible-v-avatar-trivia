@@ -13,10 +13,41 @@ function showHighScore() {
   fetch("/get_high_scores")
     .then((response) => response.json())
     .then((highScores) => {
-      // Implement logic to display high scores
-      console.log(highScores);
+      const highScoreElement = document.getElementById("high-scores");
+      highScoreElement.innerHTML = ""; // Clear previous content
+
+      if (highScores.length > 0) {
+        const ol = document.createElement("ol");
+
+        highScores.forEach((score, index) => {
+          const li = document.createElement("li");
+          li.textContent = `#${index + 1}: ${score}`;
+          ol.appendChild(li);
+        });
+
+        highScoreElement.appendChild(ol);
+      } else {
+        highScoreElement.innerHTML += "<p>No high scores yet.</p>";
+      }
+
+      // Show the high score screen
+      document.getElementById("title-screen").style.display = "none";
+      document.getElementById("game-screen").style.display = "none";
+      document.getElementById("end-screen").style.display = "none";
+      document.getElementById("high-score-screen").style.display = "block";
     })
     .catch((error) => console.error("Error fetching high scores:", error));
+}
+
+function goToMainScreen() {
+  // Show the main screen
+  document.getElementById("title-screen").style.display = "block";
+  document.getElementById("game-screen").style.display = "none";
+  document.getElementById("end-screen").style.display = "none";
+  document.getElementById("high-score-screen").style.display = "none";
+  currentQuestionIndex = 0;
+  score = 0;
+  loadQuestion();
 }
 
 function loadQuestion() {
@@ -70,14 +101,6 @@ function nextQuestion() {
   } else {
     endGame();
   }
-}
-
-function goToMainScreen() {
-  document.getElementById("end-screen").style.display = "none";
-  document.getElementById("title-screen").style.display = "block";
-  currentQuestionIndex = 0;
-  score = 0;
-  loadQuestion();
 }
 
 function endGame() {

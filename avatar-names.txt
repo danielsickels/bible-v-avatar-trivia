@@ -1,11 +1,11 @@
 Aang
-Admiral Zhao
+Zhao
 Appa
-Aunt Wu
+Wu
 Azula
 Bato
 Bumi
-Chit Sang
+Chit
 Chong
 Dai Li
 Ozai
@@ -17,25 +17,24 @@ Haru
 Hama
 Hahn
 Han
-Hei Bai
+Hei
 Hing
 Hong Wu
 Hotah
 Iroh
-Jeong Jeong
+Jeong
 Jet
 Jin
 Katara
-King Bumi
 Kuei
 Kuzon
-Lao Beifong
+Lao
 Lee
-Long Feng
+Feng
 Lo 
 Li
 Longshot
-Lu Ten
+Lu
 Mai
 Pakku
 Meng
@@ -60,16 +59,16 @@ Tai
 Teo
 Tho
 Thod
-Tom Tom
+Tom
 Top
 Ummi
 Vachir
-Wan Shi Tong
+Wan
 Qin
 Wei
 Wensheng
 Wing
-Wonyong Keum
+Wonyong
 Xin Fu
 Yagoda
 Yakone

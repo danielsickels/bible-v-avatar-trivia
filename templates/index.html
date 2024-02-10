@@ -1,5 +1,3 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,6 +25,12 @@
     <div id="end-screen" style="display: none">
       <h2>Game Over!</h2>
       <p id="final-score">Your Final Score: 0</p>
+      <button onclick="goToMainScreen()">Back</button>
+    </div>
+    <div id="high-score-screen" style="display: none">
+      <!-- Container to display high scores -->
+      <h2>High Scores</h2>
+      <div id="high-scores"></div>
       <button onclick="goToMainScreen()">Back</button>
     </div>
     <link
