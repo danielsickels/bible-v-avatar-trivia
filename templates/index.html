@@ -7,9 +7,10 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='styles.css') }}"
     />
-    <title>Quiz Game</title>
+    <title>Outliers Name Quiz</title>
   </head>
   <body>
+    <h1 style="text-align: center">Outliers Name Quiz</h1>
     <div id="title-screen">
       <button onclick="startGame()">Play</button>
       <button onclick="showHighScore()">High Score</button>
@@ -28,7 +29,6 @@
       <button onclick="goToMainScreen()">Back</button>
     </div>
     <div id="high-score-screen" style="display: none">
-      <!-- Container to display high scores -->
       <h2>High Scores</h2>
       <div id="high-scores"></div>
       <button onclick="goToMainScreen()">Back</button>
