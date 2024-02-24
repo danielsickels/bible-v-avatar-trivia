@@ -96,7 +96,7 @@ function disableOptions() {
 function nextQuestion() {
   currentQuestionIndex++;
 
-  if (currentQuestionIndex < 30) {
+  if (currentQuestionIndex < 20) {
     loadQuestion();
   } else {
     endGame();

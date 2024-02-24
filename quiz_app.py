@@ -77,4 +77,4 @@ def update_high_scores():
         return jsonify({'success': False})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=2000)

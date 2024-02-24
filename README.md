@@ -8,4 +8,4 @@ To play, you can run it locally executing the python script at the root of the r
 python3 quiz_app.py
 ```
 
-and going to localhost:5000 in browser
+Then go to localhost:2000 in browser
